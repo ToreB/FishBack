@@ -38,12 +38,11 @@ namespace FishBack.DataAccess.Migrations
             const string pass2 = "pass2";
             const string pass3 = "pass3";
 
-            var md5 = MD5.Create();
             var user1Pass = new Password
                                 {
                                     Id = 1,
                                     PasswordClearText = pass1,
-                                    PasswordHash = StringTools.GetString(md5.ComputeHash(StringTools.GetBytes(pass1))),
+                                    PasswordHash = StringTools.GetMd5Hash(pass1),
                                     Date = DateTime.Now
                                 };
             var user1Email = new Email {Id = 1, Address = "toreb@mesan.no", Priority = 1, Date = DateTime.Now};
@@ -54,7 +53,7 @@ namespace FishBack.DataAccess.Migrations
             {
                 Id = 2,
                 PasswordClearText = pass2,
-                PasswordHash = StringTools.GetString(md5.ComputeHash(StringTools.GetBytes(pass2))),
+                PasswordHash = StringTools.GetMd5Hash(pass2),
                 Date = DateTime.Now
             };
             var user2Email = new Email { Id = 2, Address = "andersa@mesan.no", Priority = 1, Date = DateTime.Now };
@@ -65,7 +64,7 @@ namespace FishBack.DataAccess.Migrations
             {
                 Id = 3,
                 PasswordClearText = pass3,
-                PasswordHash = StringTools.GetString(md5.ComputeHash(StringTools.GetBytes(pass3))),
+                PasswordHash = StringTools.GetMd5Hash(pass3),
                 Date = DateTime.Now
             };
             var user3Email = new Email { Id = 3, Address = "richardn@mesan.no", Priority = 1, Date = DateTime.Now };
