@@ -11,12 +11,15 @@ using System.Web.Http;
 using FishBack.Domain;
 using FishBack.DataAccess;
 using FishBack.Util;
+using System.IO;
+using log4net;
 
 namespace FishBack.Controllers
 {
     public class LoginController : ApiController
     {
         private FishDbContext _db = new FishDbContext();
+        private static readonly ILog log = LogManager.GetLogger(typeof(LoginController));
 
         public ClientLogin GetLogin()
         {
@@ -24,6 +27,8 @@ namespace FishBack.Controllers
 
             var hash = StringTools.GetString(System.Security.Cryptography.MD5.Create().ComputeHash(StringTools.GetBytes("pass1")));
             var login = new ClientLogin { Username = "toreb", Password = hash, ClientInfo = client};
+
+            log.Info(login.Username);
 
             return login;
         }
@@ -67,6 +72,8 @@ namespace FishBack.Controllers
         // POST api/Login
         public HttpResponseMessage PostLogin(ClientLogin login)
         {
+            log.Info(login);
+
             if (ModelState.IsValid)
             {
                 var user = (from u in _db.Users.Include(o => o.Passwords)
@@ -95,7 +102,7 @@ namespace FishBack.Controllers
 
                 _db.Logins.Add(userLogin);
 
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, userLogin);
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, new {Login = userLogin});
                 response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = userLogin.Id }));
                 return response;
             }

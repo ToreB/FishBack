@@ -24,7 +24,7 @@ namespace FishBack.Controllers
         }
 
         // GET api/Login/5
-        public User GetUser(int id)
+        public HttpResponseMessage GetUser(int id)
         {
             User user = _db.Users.Include(o => o.Addresses)
                                  .Include(o => o.Emails)
@@ -32,10 +32,10 @@ namespace FishBack.Controllers
                                  .FirstOrDefault(u => u.Id == id);
             if (user == null)
             {
-                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
+                return Request.CreateResponse(HttpStatusCode.NotFound);
             }
 
-            return user;
+            return Request.CreateResponse(HttpStatusCode.OK, new {User = user});
         }
 
         // PUT api/Login/5
