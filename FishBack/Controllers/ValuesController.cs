@@ -22,8 +22,9 @@ namespace FishBack.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]string value)
+        public String Post([FromBody]string value)
         {
+            return "REPLY FROM POST";
         }
 
         // PUT api/values/5

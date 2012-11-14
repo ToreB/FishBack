@@ -25,7 +25,7 @@ namespace FishBack.Controllers
         {
             var client = new Client {ClientId = Guid.NewGuid(), SoftwareVersion = "1.0", Type = "iPhone"};
 
-            var hash = StringTools.GetString(System.Security.Cryptography.MD5.Create().ComputeHash(StringTools.GetBytes("pass1")));
+            var hash = StringTools.GetMd5Hash("pass1");
             var login = new ClientLogin { Username = "toreb", Password = hash, ClientInfo = client};
 
             log.Info(login.Username);

@@ -23,6 +23,9 @@ namespace FishBack.DataAccess
         public DbSet<Login> Logins { get; set; }
         public DbSet<Session> Sessions { get; set; }
         public DbSet<Client> Clients { get; set; }
-        //public DbSet<ClientLogin> ClientLogins { get; set; }
+        public DbSet<FishEvent> FishEvents { get; set; }
+        public DbSet<BlogEntry> BlogEntries { get; set; }
+        public DbSet<Image> Images { get; set; }
+        public DbSet<Location> Locations { get; set; }
     }
 }

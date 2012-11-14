@@ -128,6 +128,90 @@ namespace FishBack.DataAccess.Migrations
             context.Phones.AddOrUpdate(user2Phone);
             context.Phones.AddOrUpdate(user3Phone);
 
+            var location1 = new Location { Id = 1, Latitude = 59.95m, Longitude = 10.78m, MAMSL = 15 };
+            var location2 = new Location { Id = 2, Latitude = 59.25816m, Longitude = 5.321747m, MAMSL = 20 };
+
+            context.Locations.AddOrUpdate(location1);
+            context.Locations.AddOrUpdate(location2);
+
+            var img1 = new Image
+                           {
+                               Id = 1,
+                               Title = "Bilde1",
+                               FileName = "path/Bilde1",
+                               OriginalFileName = "DCIM111111",
+                               Comment = "Bilde1 kommentar",
+                               Location = location1,
+                               DateTime = DateTime.Now,
+                               User = user1
+                           };
+            var img2 = new Image
+                           {
+                               Id = 2,
+                               Title = "Bilde2",
+                               FileName = "path/Bilde2",
+                               OriginalFileName = "DCIM22222",
+                               Comment = "Bilde2 kommentar",
+                               Location = location2,
+                               DateTime = DateTime.Now,
+                               User = user2
+                           };
+
+            context.Images.AddOrUpdate(img1);
+            context.Images.AddOrUpdate(img2);
+
+            var event1 = new FishEvent
+                             {
+                                 Id = 1,
+                                 User = user1,
+                                 Title = "FishEvent1",
+                                 Location = location1,
+                                 Images = new Collection<Image> {img1},
+                                 Comment = "FishEvent1 comment",
+                                 DateTime = DateTime.Now
+                             };
+
+            var event2 = new FishEvent
+                             {
+                                 Id = 2,
+                                 User = user2,
+                                 Title = "FishEvent2",
+                                 Location = location2,
+                                 Images = new Collection<Image> {img2},
+                                 Comment = "FishEvent2 comment",
+                                 DateTime = DateTime.Now
+                             };
+
+            context.FishEvents.AddOrUpdate(event1);
+            context.FishEvents.AddOrUpdate(event2);
+
+            var blogEntry1 = new BlogEntry
+                                 {
+                                     Id = 1,
+                                     User = user1,
+                                     Title = "BlogEntry1",
+                                     Content = "BlogEntry1 content",
+                                     FishEvents = new Collection<FishEvent> {event1},
+                                     Tags = new Collection<string> {"fish", "event"},
+                                     CreateDate = DateTime.Now,
+                                     EditDate = DateTime.Now
+                                 };
+
+            var blogEntry2 = new BlogEntry
+            {
+                Id = 2,
+                User = user2,
+                Title = "BlogEntry2",
+                Content = "BlogEntry2 content",
+                FishEvents = new Collection<FishEvent> { event2 },
+                Tags = new Collection<string> { "fish", "event" },
+                CreateDate = DateTime.Now,
+                EditDate = DateTime.Now
+            };
+
+            context.BlogEntries.AddOrUpdate(blogEntry1);
+            context.BlogEntries.AddOrUpdate(blogEntry2);
+
             context.SaveChanges();
         }
     }
