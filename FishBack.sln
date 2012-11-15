@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishBack.DataAccess", "Fish
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishBack.Util", "FishBack.Util\FishBack.Util.csproj", "{0012BE64-579C-401E-8198-ADD0CDCFC45F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishBack.Web", "FishBack.Web\FishBack.Web.csproj", "{D996093B-B4EC-4488-882E-C1FCFF42603C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishBack.Web.Tests", "FishBack.Web.Tests\FishBack.Web.Tests.csproj", "{FDA4E71E-F40B-4DC1-A367-A72F301B10DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +41,14 @@ Global
 		{0012BE64-579C-401E-8198-ADD0CDCFC45F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0012BE64-579C-401E-8198-ADD0CDCFC45F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0012BE64-579C-401E-8198-ADD0CDCFC45F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D996093B-B4EC-4488-882E-C1FCFF42603C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D996093B-B4EC-4488-882E-C1FCFF42603C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D996093B-B4EC-4488-882E-C1FCFF42603C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D996093B-B4EC-4488-882E-C1FCFF42603C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDA4E71E-F40B-4DC1-A367-A72F301B10DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDA4E71E-F40B-4DC1-A367-A72F301B10DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDA4E71E-F40B-4DC1-A367-A72F301B10DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDA4E71E-F40B-4DC1-A367-A72F301B10DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
