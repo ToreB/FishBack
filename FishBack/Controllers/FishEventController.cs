@@ -18,13 +18,21 @@ namespace FishBack.Controllers
         private FishDbContext db = new FishDbContext();
 
         // GET api/FishEvent
-        public IEnumerable<FishEvent> GetFishEvents()
+        public HttpResponseMessage GetFishEvents()
         {
-            return db.FishEvents.AsEnumerable();
+            //TODO: Fikse slik at vi bare får ut en adresse, den nyeste.
+            var events = db.FishEvents.Include(o => o.User)
+                                        .Include(o => o.User.Addresses)
+                                        .Include(o => o.User.Emails/*.OrderByDescending(d => d.Date).FirstOrDefault()*/)
+                                        .Include(o => o.User.Phones/*.OrderByDescending(d => d.Date).FirstOrDefault()*/)
+                                        .Include(o => o.Location)
+                                        .Include(o => o.Images)
+                                        .AsEnumerable();
+            return Request.CreateResponse(HttpStatusCode.OK, new {FishEvents = events});
         }
 
         // GET api/FishEvent/5
-        public FishEvent GetFishEvent(int id)
+        public HttpResponseMessage GetFishEvent(int id)
         {
             FishEvent fishevent = db.FishEvents.Find(id);
             if (fishevent == null)
@@ -32,7 +40,7 @@ namespace FishBack.Controllers
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
             }
 
-            return fishevent;
+            return Request.CreateResponse(HttpStatusCode.OK, new { FishEvent = fishevent});
         }
 
         // PUT api/FishEvent/5
