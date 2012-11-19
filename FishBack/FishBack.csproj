@@ -204,6 +204,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Log4Net.config" />
+    <None Include="Properties\PublishProfiles\fishback - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\fishback - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
