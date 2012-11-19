@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -10,24 +11,49 @@ using System.Web;
 using System.Web.Http;
 using FishBack.Domain;
 using FishBack.DataAccess;
+using log4net;
 
 namespace FishBack.Controllers
 {
     public class FishEventController : ApiController
     {
         private FishDbContext db = new FishDbContext();
+        private readonly ILog logger = LogManager.GetLogger(typeof (FishEventController));
 
         // GET api/FishEvent
         public HttpResponseMessage GetFishEvents()
         {
-            //TODO: Fikse slik at vi bare får ut en adresse, den nyeste.
             var events = db.FishEvents.Include(o => o.User)
                                         .Include(o => o.User.Addresses)
-                                        .Include(o => o.User.Emails/*.OrderByDescending(d => d.Date).FirstOrDefault()*/)
-                                        .Include(o => o.User.Phones/*.OrderByDescending(d => d.Date).FirstOrDefault()*/)
+                                        .Include(o => o.User.Emails)
+                                        .Include(o => o.User.Phones)
                                         .Include(o => o.Location)
                                         .Include(o => o.Images)
-                                        .AsEnumerable();
+                                        .AsEnumerable()
+                                        .Select(o =>
+                                            new FishEvent
+                                                {
+                                                    Comment = o.Comment,
+                                                    DateTime = o.DateTime,
+                                                    Id = o.Id,
+                                                    Images = o.Images,
+                                                    Location = o.Location,
+                                                    Title = o.Title,
+                                                    User = new User
+                                                               {
+                                                                   Addresses = new Collection<Address> { o.User.Addresses.OrderByDescending(p => p.Date).FirstOrDefault() },
+                                                                   Birthdate = o.User.Birthdate,
+                                                                   Emails = new Collection<Email> { o.User.Emails.OrderByDescending(p => p.Date).FirstOrDefault() },
+                                                                   Firstname = o.User.Firstname,
+                                                                   Id = o.User.Id,
+                                                                   Lastname = o.User.Lastname,
+                                                                   Passwords = null,
+                                                                   Phones = new Collection<Phone> { o.User.Phones.OrderByDescending(p => p.Date).FirstOrDefault() },
+                                                                   Username = o.User.Username
+                                                               }
+                                                }
+                                        );
+                                        
             return Request.CreateResponse(HttpStatusCode.OK, new {FishEvents = events});
         }
 
@@ -70,12 +96,14 @@ namespace FishBack.Controllers
         // POST api/FishEvent
         public HttpResponseMessage PostFishEvent(FishEvent fishevent)
         {
+            logger.Info(fishevent.Id);
             if (ModelState.IsValid)
             {
+                fishevent.Id = 0;
                 db.FishEvents.Add(fishevent);
                 db.SaveChanges();
 
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, fishevent);
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, new { FishEvent = fishevent });
                 response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = fishevent.Id }));
                 return response;
             }
