@@ -96,12 +96,33 @@ namespace FishBack.Controllers
         // POST api/FishEvent
         public HttpResponseMessage PostFishEvent(FishEvent fishevent)
         {
-            logger.Info(fishevent.Id);
+            logger.Info(fishevent);
             if (ModelState.IsValid)
             {
-                fishevent.Id = 0;
-                db.FishEvents.Add(fishevent);
-                db.SaveChanges();
+                try
+                {
+                    /*fishevent.Location = db.Locations.Add(fishevent.Location);
+                    db.SaveChanges();
+                    
+                    var collection = new Collection<Image>();
+                    if (fishevent.Images != null && fishevent.Images.Count != 0)
+                    {
+                        foreach (var image in fishevent.Images)
+                        {
+                            collection.Add(db.Images.Add(image));
+                        }
+
+                        fishevent.Images = collection;
+                        db.SaveChanges();
+                    }*/
+
+                    db.FishEvents.Add(fishevent);
+                    db.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    logger.Error(e.Message + "\nInner Exception: " + e.InnerException.Message + "\nStackTrace: " + e.StackTrace);
+                }
 
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, new { FishEvent = fishevent });
                 response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = fishevent.Id }));

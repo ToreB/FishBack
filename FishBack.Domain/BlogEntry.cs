@@ -13,7 +13,7 @@ namespace FishBack.Domain
         public string Title { get; set; }
         public string Content { get; set; }
         public ICollection<string> Tags { get; set; }
-        public ICollection<FishEvent> FishEvents { get; set; }
+        //public ICollection<FishEvent> FishEvents { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime EditDate { get; set; }
     }

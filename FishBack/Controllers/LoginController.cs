@@ -74,33 +74,44 @@ namespace FishBack.Controllers
         {
             log.Info(login);
 
+            Login userLogin = null;
             if (ModelState.IsValid)
             {
-                var user = (from u in _db.Users.Include(o => o.Passwords)
-                            where u.Username == login.Username &&
-                            u.Passwords.OrderByDescending(d => d.Date).FirstOrDefault().PasswordHash == login.Password
-                            select u).FirstOrDefault();
-
-                if (user == null)
+                try
                 {
-                    return Request.CreateResponse(HttpStatusCode.Unauthorized);
+                    var user = (from u in _db.Users.Include(o => o.Passwords)
+                                where u.Username == login.Username &&
+                                u.Passwords.OrderByDescending(d => d.Date).FirstOrDefault().PasswordHash == login.Password
+                                select u).FirstOrDefault();
+
+                    if (user == null)
+                    {
+                        return Request.CreateResponse(HttpStatusCode.Unauthorized);
+                    }
+
+                    var now = DateTime.Now;
+                    userLogin = new Login
+                                     {
+                                         Ip = ((HttpContextWrapper) Request.Properties["MS_HttpContext"]).Request.UserHostAddress,
+                                         User = user,
+                                         LoginTime = now,
+                                         LogoutTime = now.AddHours(1),
+                                         Session = new Session
+                                                       {
+                                                           Begin = now,
+                                                           Expires = now.AddHours(1),
+                                                           Token = Guid.NewGuid()
+                                                       }
+                                     };
+
+                
+                    _db.Logins.Add(userLogin);
+                    _db.SaveChanges();
                 }
-
-                var now = DateTime.Now;
-                var userLogin = new Login
-                                 {
-                                     Ip = ((HttpContextWrapper) Request.Properties["MS_HttpContext"]).Request.UserHostAddress,
-                                     LoginTime = now,
-                                     LogoutTime = now.AddHours(1),
-                                     Session = new Session
-                                                   {
-                                                       Begin = now,
-                                                       Expires = now.AddHours(1),
-                                                       Token = Guid.NewGuid()
-                                                   }
-                                 };
-
-                _db.Logins.Add(userLogin);
+                catch (Exception e)
+                {
+                    log.Error(e.Message + ": " + e.StackTrace);
+                }
 
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, new {Login = userLogin});
                 response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = userLogin.Id }));

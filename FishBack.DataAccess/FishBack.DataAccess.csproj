@@ -60,6 +60,18 @@
     <Compile Include="Migrations\201211141137192_BlogEntry_Image_FishEvent_Location.Designer.cs">
       <DependentUpon>201211141137192_BlogEntry_Image_FishEvent_Location.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201211200844174_added_some_user_properties.cs" />
+    <Compile Include="Migrations\201211200844174_added_some_user_properties.Designer.cs">
+      <DependentUpon>201211200844174_added_some_user_properties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201211201125186_fixed_relationships.cs" />
+    <Compile Include="Migrations\201211201125186_fixed_relationships.Designer.cs">
+      <DependentUpon>201211201125186_fixed_relationships.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201211201127143_removed_FishEvent_relationship_from_BlogEntry.cs" />
+    <Compile Include="Migrations\201211201127143_removed_FishEvent_relationship_from_BlogEntry.Designer.cs">
+      <DependentUpon>201211201127143_removed_FishEvent_relationship_from_BlogEntry.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -91,6 +103,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201211141137192_BlogEntry_Image_FishEvent_Location.resx">
       <DependentUpon>201211141137192_BlogEntry_Image_FishEvent_Location.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201211200844174_added_some_user_properties.resx">
+      <DependentUpon>201211200844174_added_some_user_properties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201211201125186_fixed_relationships.resx">
+      <DependentUpon>201211201125186_fixed_relationships.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201211201127143_removed_FishEvent_relationship_from_BlogEntry.resx">
+      <DependentUpon>201211201127143_removed_FishEvent_relationship_from_BlogEntry.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

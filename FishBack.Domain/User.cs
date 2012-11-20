@@ -18,5 +18,7 @@ namespace FishBack.Domain
         public ICollection<Email> Emails { get; set; }
         public ICollection<Address> Addresses { get; set; }
         public ICollection<Phone> Phones { get; set; }
+        //public ICollection<BlogEntry> BlogEntries { get; set; }
+        //public ICollection<FishEvent> FishEvents { get; set; } 
     }
 }

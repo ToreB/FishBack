@@ -141,9 +141,9 @@ namespace FishBack.DataAccess.Migrations
                                FileName = "path/Bilde1",
                                OriginalFileName = "DCIM111111",
                                Comment = "Bilde1 kommentar",
-                               Location = location1,
+                               /*Location = location1,*/
                                DateTime = DateTime.Now,
-                               User = user1
+                               /*User = user1*/
                            };
             var img2 = new Image
                            {
@@ -152,9 +152,9 @@ namespace FishBack.DataAccess.Migrations
                                FileName = "path/Bilde2",
                                OriginalFileName = "DCIM22222",
                                Comment = "Bilde2 kommentar",
-                               Location = location2,
+                               /*Location = location2,*/
                                DateTime = DateTime.Now,
-                               User = user2
+                               /*User = user2*/
                            };
 
             context.Images.AddOrUpdate(img1);
@@ -191,7 +191,7 @@ namespace FishBack.DataAccess.Migrations
                                      User = user1,
                                      Title = "BlogEntry1",
                                      Content = "BlogEntry1 content",
-                                     FishEvents = new Collection<FishEvent> {event1},
+                                     /*FishEvents = new Collection<FishEvent> {event1},*/
                                      Tags = new Collection<string> {"fish", "event"},
                                      CreateDate = DateTime.Now,
                                      EditDate = DateTime.Now
@@ -203,7 +203,7 @@ namespace FishBack.DataAccess.Migrations
                 User = user2,
                 Title = "BlogEntry2",
                 Content = "BlogEntry2 content",
-                FishEvents = new Collection<FishEvent> { event2 },
+                /*FishEvents = new Collection<FishEvent> { event2 },*/
                 Tags = new Collection<string> { "fish", "event" },
                 CreateDate = DateTime.Now,
                 EditDate = DateTime.Now

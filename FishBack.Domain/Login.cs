@@ -10,7 +10,7 @@ namespace FishBack.Domain
     {
         public int Id { get; set; }
         
-        //public User User { get; set; }
+        public User User { get; set; }
         public DateTime LoginTime { get; set; }
         public DateTime LogoutTime { get; set; }
         public Session Session { get; set; }
