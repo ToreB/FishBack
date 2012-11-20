@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -24,13 +25,13 @@ namespace FishBack.Controllers
         public HttpResponseMessage GetFishEvents()
         {
             var events = db.FishEvents.Include(o => o.User)
-                                        .Include(o => o.User.Addresses)
+                /*.Include(o => o.User.Addresses)
                                         .Include(o => o.User.Emails)
-                                        .Include(o => o.User.Phones)
-                                        .Include(o => o.Location)
-                                        .Include(o => o.Images)
-                                        .AsEnumerable()
-                                        .Select(o =>
+                                        .Include(o => o.User.Phones)*/
+                .Include(o => o.Location)
+                .Include(o => o.Images)
+                .AsEnumerable();
+                                        /*.Select(o =>
                                             new FishEvent
                                                 {
                                                     Comment = o.Comment,
@@ -52,7 +53,7 @@ namespace FishBack.Controllers
                                                                    Username = o.User.Username
                                                                }
                                                 }
-                                        );
+                                        );*/
                                         
             return Request.CreateResponse(HttpStatusCode.OK, new {FishEvents = events});
         }
@@ -116,12 +117,12 @@ namespace FishBack.Controllers
                         db.SaveChanges();
                     }*/
 
-                    db.FishEvents.Add(fishevent);
+                    db.FishEvents.AddOrUpdate(fishevent);
                     db.SaveChanges();
                 }
                 catch (Exception e)
                 {
-                    logger.Error(e.Message + "\nInner Exception: " + e.InnerException.Message + "\nStackTrace: " + e.StackTrace);
+                    logger.Error(e.Message + "\nInner Exception: " + e.InnerException.InnerException.Message + "\nStackTrace: " + e.StackTrace);
                 }
 
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, new { FishEvent = fishevent });
