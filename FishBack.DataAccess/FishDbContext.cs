@@ -27,5 +27,6 @@ namespace FishBack.DataAccess
         public DbSet<BlogEntry> BlogEntries { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Location> Locations { get; set; }
+        public DbSet<Tag> Tags { get; set; }
     }
 }

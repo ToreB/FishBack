@@ -72,6 +72,14 @@
     <Compile Include="Migrations\201211201127143_removed_FishEvent_relationship_from_BlogEntry.Designer.cs">
       <DependentUpon>201211201127143_removed_FishEvent_relationship_from_BlogEntry.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201211210826030_FileNameSuffix_image.cs" />
+    <Compile Include="Migrations\201211210826030_FileNameSuffix_image.Designer.cs">
+      <DependentUpon>201211210826030_FileNameSuffix_image.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201211220824384_Tag_entity.cs" />
+    <Compile Include="Migrations\201211220824384_Tag_entity.Designer.cs">
+      <DependentUpon>201211220824384_Tag_entity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -112,6 +120,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201211201127143_removed_FishEvent_relationship_from_BlogEntry.resx">
       <DependentUpon>201211201127143_removed_FishEvent_relationship_from_BlogEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201211210826030_FileNameSuffix_image.resx">
+      <DependentUpon>201211210826030_FileNameSuffix_image.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201211220824384_Tag_entity.resx">
+      <DependentUpon>201211220824384_Tag_entity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
