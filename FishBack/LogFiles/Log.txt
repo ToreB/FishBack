@@ -1,0 +1,14 @@
+22-11-2012 10:38:53,317 ERROR FishBack.Controllers.BlogEntryController - The Include path expression must refer to a navigation property defined on the type. Use dotted paths for reference navigation properties and the Select operator for collection navigation properties.
+Parameter name: path
+Inner Exceptions: 
+StackTrace:    at System.Data.Entity.DbExtensions.Include[T,TProperty](IQueryable`1 source, Expression`1 path)
+   at FishBack.Controllers.BlogEntryController.GetBlogEntries() in c:\Projects\FishBack\FishBack\Controllers\BlogEntryController.cs:line 42
+
+
+22-11-2012 10:42:31,959 ERROR FishBack.Controllers.BlogEntryController - The Include path expression must refer to a navigation property defined on the type. Use dotted paths for reference navigation properties and the Select operator for collection navigation properties.
+Parameter name: path
+Inner Exceptions: 
+StackTrace:    at System.Data.Entity.DbExtensions.Include[T,TProperty](IQueryable`1 source, Expression`1 path)
+   at FishBack.Controllers.BlogEntryController.GetBlogEntries() in c:\Projects\FishBack\FishBack\Controllers\BlogEntryController.cs:line 42
+
+

@@ -1,3 +1,5 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=6CABDA5E_002D17C7_002D4CAD_002DAD86_002D7A48C5E0F688_002Fd_003AControllers_002Ff_003AFishEventController_002Ecs/@EntryIndexedValue">ExplicitlyExcluded</s:String>
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=6CABDA5E_002D17C7_002D4CAD_002DAD86_002D7A48C5E0F688_002Fd_003AControllers_002Ff_003ALoginController_002Ecs/@EntryIndexedValue">ExplicitlyExcluded</s:String>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=70D5964E_002D5D91_002D4842_002DB2D1_002D2468E48699E6_002Fd_003AMigrations_002Ff_003AConfiguration_002Ecs/@EntryIndexedValue">ExplicitlyExcluded</s:String>
 	<s:String x:Key="/Default/CodeInspection/Highlighting/AnalysisEnabled/@EntryValue">SOLUTION</s:String></wpf:ResourceDictionary>

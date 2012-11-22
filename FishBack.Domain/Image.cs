@@ -17,5 +17,6 @@ namespace FishBack.Domain
         public string Title { get; set; }
         public string FileName { get; set; }
         public string OriginalFileName { get; set; }
+        public string FileNameSuffix { get; set; }
     }
 }
