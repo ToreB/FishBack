@@ -18,9 +18,14 @@ namespace FishBack.Controllers
         private readonly FishDbContext _db = new FishDbContext();
 
         // GET api/Login
-        public IEnumerable<User> GetUsers()
+        public HttpResponseMessage GetUsers()
         {
-            return _db.Users.AsEnumerable();
+            var users = _db.Users.Include(o => o.Addresses)
+                            .Include(o => o.Emails)
+                            .Include(o => o.Phones)
+                            .AsEnumerable();
+
+            return Request.CreateResponse(HttpStatusCode.OK, new {User = users});
         }
 
         // GET api/Login/5
