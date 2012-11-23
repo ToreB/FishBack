@@ -25,7 +25,7 @@ namespace FishBack.Controllers
                             .Include(o => o.Phones)
                             .AsEnumerable();
 
-            return Request.CreateResponse(HttpStatusCode.OK, new {User = users});
+            return Request.CreateResponse(HttpStatusCode.OK, new {Users = users});
         }
 
         // GET api/Login/5
