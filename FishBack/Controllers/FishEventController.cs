@@ -80,6 +80,9 @@ namespace FishBack.Controllers
             {
                 try
                 {
+                    var user = db.Users.Find(fishevent.User.Id);
+                    fishevent.User = user;
+
                     db.FishEvents.AddOrUpdate(fishevent);
                     db.SaveChanges();
                 }
