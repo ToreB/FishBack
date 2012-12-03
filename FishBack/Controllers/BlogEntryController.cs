@@ -64,7 +64,7 @@ namespace FishBack.Controllers
         // GET api/Blog/5
         public HttpResponseMessage GetBlogEntry(int id)
         {
-            BlogEntry blogentry = db.BlogEntries.Find(id);
+            BlogEntry blogentry = db.BlogEntries.Include(o => o.User).Include(o => o.Tags).FirstOrDefault(o => o.Id == id);
             if (blogentry == null)
             {
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));

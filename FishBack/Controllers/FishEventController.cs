@@ -23,12 +23,13 @@ namespace FishBack.Controllers
         private readonly ILog logger = LogManager.GetLogger(typeof (FishEventController));
 
         // GET api/FishEvent
+        // GET api/fishevent?title=something
         public HttpResponseMessage GetFishEvents(string title = "")
         {
             var events = db.FishEvents.Include(o => o.User)
-                .Include(o => o.Location)
-                .Include(o => o.Images)
-                .AsEnumerable();
+                           .Include(o => o.Location)
+                           .Include(o => o.Images)
+                           .AsEnumerable();
 
             if (title != String.Empty)
                 events = events.Where(o => o.Title == title);
@@ -39,7 +40,11 @@ namespace FishBack.Controllers
         // GET api/FishEvent/5
         public HttpResponseMessage GetFishEvent(int id)
         {
-            FishEvent fishevent = db.FishEvents.Find(id);
+            FishEvent fishevent = db.FishEvents.Include(o => o.User)
+                                    .Include(o => o.Location)
+                                    .Include(o => o.Images)
+                                    .FirstOrDefault(o => o.Id == id);
+                                                
             if (fishevent == null)
             {
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
@@ -71,7 +76,7 @@ namespace FishBack.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
         }
-
+        
         // POST api/FishEvent
         public HttpResponseMessage PostFishEvent(FishEvent fishevent)
         {

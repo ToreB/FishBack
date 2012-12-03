@@ -17,7 +17,7 @@ namespace FishBack.Controllers
     {
         private readonly FishDbContext _db = new FishDbContext();
 
-        // GET api/Login
+        // GET api/User
         public HttpResponseMessage GetUsers()
         {
             var users = _db.Users.Include(o => o.Addresses)
@@ -28,7 +28,7 @@ namespace FishBack.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, new {Users = users});
         }
 
-        // GET api/Login/5
+        // GET api/User/5
         public HttpResponseMessage GetUser(int id)
         {
             User user = _db.Users.Include(o => o.Addresses)
@@ -43,7 +43,7 @@ namespace FishBack.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, new {User = user});
         }
 
-        // PUT api/Login/5
+        // PUT api/User/5
         public HttpResponseMessage PutUser(int id, User user)
         {
             if (ModelState.IsValid && id == user.Id)
@@ -67,7 +67,7 @@ namespace FishBack.Controllers
             }
         }
 
-        // POST api/Login
+        // POST api/User
         public HttpResponseMessage PostUser(User user)
         {
             if (ModelState.IsValid)
@@ -85,7 +85,7 @@ namespace FishBack.Controllers
             }
         }
 
-        // DELETE api/Login/5
+        // DELETE api/User/5
         public HttpResponseMessage DeleteUser(int id)
         {
             User user = _db.Users.Find(id);
