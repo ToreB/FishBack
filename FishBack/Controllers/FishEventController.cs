@@ -23,12 +23,15 @@ namespace FishBack.Controllers
         private readonly ILog logger = LogManager.GetLogger(typeof (FishEventController));
 
         // GET api/FishEvent
-        public HttpResponseMessage GetFishEvents()
+        public HttpResponseMessage GetFishEvents(string title = "")
         {
             var events = db.FishEvents.Include(o => o.User)
                 .Include(o => o.Location)
                 .Include(o => o.Images)
                 .AsEnumerable();
+
+            if (title != String.Empty)
+                events = events.Where(o => o.Title == title);
                                         
             return Request.CreateResponse(HttpStatusCode.OK, new {FishEvents = events});
         }
