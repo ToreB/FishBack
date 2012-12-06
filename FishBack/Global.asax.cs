@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using FishBack.Formatters;
 
 namespace FishBack
 {
@@ -26,6 +27,8 @@ namespace FishBack
 
             string l4net = Server.MapPath("~/log4net.config");
             log4net.Config.XmlConfigurator.ConfigureAndWatch(new System.IO.FileInfo(l4net));
+
+            GlobalConfiguration.Configuration.Formatters.Add(new ImageFormatter());
         }
     }
 }

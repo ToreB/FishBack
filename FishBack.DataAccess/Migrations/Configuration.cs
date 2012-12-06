@@ -144,7 +144,8 @@ namespace FishBack.DataAccess.Migrations
                                OriginalFileName = "DCIM111111",
                                Comment = "Bilde1 kommentar",
                                DateTime = DateTime.Now,
-                               FileNameSuffix = "jpg"
+                               FileNameSuffix = "jpg",
+                               Size = 0l
                            };
             var img2 = new Image
                            {
@@ -154,26 +155,27 @@ namespace FishBack.DataAccess.Migrations
                                OriginalFileName = "DCIM22222",
                                Comment = "Bilde2 kommentar",
                                DateTime = DateTime.Now,
-                               FileNameSuffix = "jpg"
+                               FileNameSuffix = "jpg",
+                               Size = 0l
                            };
 
             var images = new List<Image>
                              {
                                  img1, img2,
-                                 new Image {Id = 3, Title = "Bilde3", FileName = "Fish1", OriginalFileName = "DCIM33333", Comment = "Bilde3 comment", DateTime = DateTime.Now, FileNameSuffix = "jpg"},
-                                 new Image {Id = 4, Title = "Bilde4", FileName = "Fish2", OriginalFileName = "DCIM4444", Comment = "Bilde4 comment", DateTime = DateTime.Now, FileNameSuffix = "jpg"},
-                                 new Image {Id = 5, Title = "Bilde5", FileName = "Fish3", OriginalFileName = "DCIM5555", Comment = "Bilde5 comment", DateTime = DateTime.Now, FileNameSuffix = "jpg"},
-                                 new Image {Id = 6, Title = "Bilde6", FileName = "Fish4", OriginalFileName = "DCI66666", Comment = "Bilde6 comment", DateTime = DateTime.Now, FileNameSuffix = "jpg"},
+                                 new Image {Id = 3, Title = "Bilde3", FileName = "Fish1", OriginalFileName = "DCIM33333", Comment = "Bilde3 comment", DateTime = DateTime.Now, FileNameSuffix = "jpg", Size = 0l},
+                                 new Image {Id = 4, Title = "Bilde4", FileName = "Fish2", OriginalFileName = "DCIM4444", Comment = "Bilde4 comment", DateTime = DateTime.Now, FileNameSuffix = "jpg", Size = 0l},
+                                 new Image {Id = 5, Title = "Bilde5", FileName = "Fish3", OriginalFileName = "DCIM5555", Comment = "Bilde5 comment", DateTime = DateTime.Now, FileNameSuffix = "jpg", Size = 0l},
+                                 new Image {Id = 6, Title = "Bilde6", FileName = "Fish4", OriginalFileName = "DCI66666", Comment = "Bilde6 comment", DateTime = DateTime.Now, FileNameSuffix = "jpg", Size = 0l},
                              };
 
             var images2 = new List<Image>
                               {
-                                 new Image {Id = 7, Title = "Bilde7", FileName = "Fish5", OriginalFileName = "DCIM77777", Comment = "Bilde7 comment", DateTime = DateTime.Now, FileNameSuffix = "jpg"},
-                                 new Image {Id = 8, Title = "Bilde8", FileName = "Fish6", OriginalFileName = "DCIM88888", Comment = "Bilde8 comment", DateTime = DateTime.Now, FileNameSuffix = "jpg"},
-                                 new Image {Id = 9, Title = "Bilde9", FileName = "Fish7", OriginalFileName = "DCIM99999", Comment = "Bilde9 comment", DateTime = DateTime.Now, FileNameSuffix = "jpg"},
-                                 new Image {Id = 10, Title = "Bilde10", FileName = "Fish8", OriginalFileName = "DCIM101010", Comment = "Bilde10 comment", DateTime = DateTime.Now, FileNameSuffix = "jpg"},
-                                 new Image {Id = 11, Title = "Bilde11", FileName = "Fish9", OriginalFileName = "DCIM11011011", Comment = "Bilde11 comment", DateTime = DateTime.Now, FileNameSuffix = "jpg"},
-                                 new Image {Id = 12, Title = "Bilde12", FileName = "Fish10", OriginalFileName = "DCIM121212", Comment = "Bilde12 comment", DateTime = DateTime.Now, FileNameSuffix = "jpg"}
+                                 new Image {Id = 7, Title = "Bilde7", FileName = "Fish5", OriginalFileName = "DCIM77777", Comment = "Bilde7 comment", DateTime = DateTime.Now, FileNameSuffix = "jpg", Size = 0l},
+                                 new Image {Id = 8, Title = "Bilde8", FileName = "Fish6", OriginalFileName = "DCIM88888", Comment = "Bilde8 comment", DateTime = DateTime.Now, FileNameSuffix = "jpg", Size = 0l},
+                                 new Image {Id = 9, Title = "Bilde9", FileName = "Fish7", OriginalFileName = "DCIM99999", Comment = "Bilde9 comment", DateTime = DateTime.Now, FileNameSuffix = "jpg", Size = 0l},
+                                 new Image {Id = 10, Title = "Bilde10", FileName = "Fish8", OriginalFileName = "DCIM101010", Comment = "Bilde10 comment", DateTime = DateTime.Now, FileNameSuffix = "jpg", Size = 0l},
+                                 new Image {Id = 11, Title = "Bilde11", FileName = "Fish9", OriginalFileName = "DCIM11011011", Comment = "Bilde11 comment", DateTime = DateTime.Now, FileNameSuffix = "jpg", Size = 0l},
+                                 new Image {Id = 12, Title = "Bilde12", FileName = "Fish10", OriginalFileName = "DCIM121212", Comment = "Bilde12 comment", DateTime = DateTime.Now, FileNameSuffix = "jpg", Size = 0l}
                              };
             foreach(var img in images)
             {

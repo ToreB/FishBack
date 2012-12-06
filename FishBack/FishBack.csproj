@@ -138,8 +138,10 @@
     <Compile Include="Controllers\BlogEntryController.cs" />
     <Compile Include="Controllers\FishEventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Formatters\ImageFormatter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -18,5 +18,8 @@ namespace FishBack.Domain
         public string FileName { get; set; }
         public string OriginalFileName { get; set; }
         public string FileNameSuffix { get; set; }
+        public long Size { get; set; }
+        public byte[] Bytes { get; set; }
+        public string MIMEType { get; set; }
     }
 }

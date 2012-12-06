@@ -80,6 +80,10 @@
     <Compile Include="Migrations\201211220824384_Tag_entity.Designer.cs">
       <DependentUpon>201211220824384_Tag_entity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201212061454185_Changes_in_Image.cs" />
+    <Compile Include="Migrations\201212061454185_Changes_in_Image.Designer.cs">
+      <DependentUpon>201212061454185_Changes_in_Image.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -126,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201211220824384_Tag_entity.resx">
       <DependentUpon>201211220824384_Tag_entity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201212061454185_Changes_in_Image.resx">
+      <DependentUpon>201212061454185_Changes_in_Image.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
