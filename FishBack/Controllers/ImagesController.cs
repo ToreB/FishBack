@@ -40,14 +40,19 @@ namespace FishBack.Controllers
 
 
         // POST api/Image
-        public HttpResponseMessage PostImage(Image nyttImage)
+        public HttpResponseMessage PostImage(int fishEventId, Image newImage)
         {
 
-            db.Images.Add(nyttImage);
+            var fishEvent = db.FishEvents.Find(fishEventId);
+            if (fishEvent == null)
+                Request.CreateResponse(HttpStatusCode.NotFound);
+
+            fishEvent.Images.Add(newImage);
+            db.Images.Add(newImage);
             db.SaveChanges();
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
-            response.Headers.Location = new Uri(Url.Link("ImageApi", new { id = nyttImage.Id, ext = nyttImage.FileNameSuffix }));
+            response.Headers.Location = new Uri(Url.Link("ImageApi", new { id = newImage.Id, ext = newImage.FileNameSuffix }));
             return response;
         }
 
