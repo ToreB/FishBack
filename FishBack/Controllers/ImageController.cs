@@ -44,7 +44,7 @@ namespace FishBack.Controllers
             db.SaveChanges();
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
-            response.Headers.Location = new Uri(Url.Link("ImagesApi", new { id = nyttImage.Id, ext = nyttImage.FileNameSuffix }));
+            response.Headers.Location = new Uri(Url.Link("ImageApi", new { id = nyttImage.Id, ext = nyttImage.FileNameSuffix }));
             return response;
         }
 
