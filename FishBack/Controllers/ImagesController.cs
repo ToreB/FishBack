@@ -8,16 +8,19 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using FishBack.DataAccess;
 using FishBack.Domain;
+using log4net;
 
 namespace FishBack.Controllers
 {
     public class ImagesController : ApiController
     {
         private FishDbContext db = new FishDbContext();
+        private static readonly ILog log = LogManager.GetLogger(typeof(ImagesController));
 
-        // GET api/Images/5
+        // GET api/Image/5
         public HttpResponseMessage GetImage(int id, string ext)
         {
+            log.Info("ImageController.GetImage");
             Image bilde = db.Images.Find(id);
 
             Trace.WriteLine("GET: " + id + " EXT: " + ext);
@@ -25,7 +28,7 @@ namespace FishBack.Controllers
             if (bilde != null && bilde.FileNameSuffix.Equals(ext))
             {
 
-                var response = Request.CreateResponse();
+                var response = Request.CreateResponse(HttpStatusCode.OK );
                 response.Content = new StreamContent(new MemoryStream(bilde.Bytes)); // this file stream will be closed by lower layers of web api for you once the response is completed.
                 response.Content.Headers.ContentType = new MediaTypeHeaderValue(bilde.MIMEType);
 
@@ -36,7 +39,7 @@ namespace FishBack.Controllers
         }
 
 
-        // POST api/Images
+        // POST api/Image
         public HttpResponseMessage PostImage(Image nyttImage)
         {
 
@@ -48,7 +51,7 @@ namespace FishBack.Controllers
             return response;
         }
 
-        // DELETE api/Images/5
+        // DELETE api/Image/5
         public HttpResponseMessage DeleteImage(int id)
         {
             Image bilde = db.Images.Find(id);

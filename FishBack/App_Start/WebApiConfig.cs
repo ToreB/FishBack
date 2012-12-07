@@ -12,7 +12,7 @@ namespace FishBack
             config.Routes.MapHttpRoute(
                 name: "ImageApi",
                 routeTemplate: "api/{controller}/{id}.{ext}",
-                defaults: new { controller = "Image" }
+                defaults: new { controller = "Images" }
             );
 
             config.Routes.MapHttpRoute(
