@@ -45,7 +45,7 @@ namespace FishBack.Controllers
 
             var fishEvent = db.FishEvents.Find(fishEventId);
             if (fishEvent == null)
-                Request.CreateResponse(HttpStatusCode.NotFound);
+                return Request.CreateResponse(HttpStatusCode.NotFound);
 
             fishEvent.Images.Add(newImage);
             db.Images.Add(newImage);
