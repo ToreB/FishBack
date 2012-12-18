@@ -16,15 +16,15 @@ namespace FishBack
             );
 
             config.Routes.MapHttpRoute(
-                name: "ImagePost",
-                routeTemplate: "api/fishevent/{fishEventId}/{controller}/",
-                defaults: new { controller = "Images" }
-            );
-
-            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "ImagePost",
+                routeTemplate: "api/fishevent/{fishEventId}/{controller}/",
+                defaults: new { controller = "Images" }
             );
 
             var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");
