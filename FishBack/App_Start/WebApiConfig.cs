@@ -11,8 +11,7 @@ namespace FishBack
         {
             config.Routes.MapHttpRoute(
                 name: "ImageApi",
-                routeTemplate: "api/{controller}/{id}.{ext}",
-                defaults: new { controller = "Images" }
+                routeTemplate: "api/images/{id}.{ext}"
                 //constraints: new { id = "[^\\.]+", ext = "[^\\.]+"}
             );
 
